@@ -48,6 +48,52 @@ export default function HomePage() {
           );
         })}
       </div>
+      {/* How It Works */}
+<div className="mb-16">
+  <h2 className="text-3xl font-bold text-white text-center mb-10">
+    {language === 'ar' ? 'كيف تعمل الأداة؟' : 'How It Works'}
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-6">
+
+    <div className="glass-card p-6 text-center">
+      <div className="text-5xl mb-4">📤</div>
+      <h3 className="text-xl font-semibold text-white mb-2">
+        {language === 'ar' ? '1. ارفع الصورة' : '1. Upload Image'}
+      </h3>
+      <p className="text-gray-400">
+        {language === 'ar'
+          ? 'اختر أي صورة من جهازك.'
+          : 'Choose any image from your device.'}
+      </p>
+    </div>
+
+    <div className="glass-card p-6 text-center">
+      <div className="text-5xl mb-4">🤖</div>
+      <h3 className="text-xl font-semibold text-white mb-2">
+        {language === 'ar' ? '2. الذكاء الاصطناعي' : '2. AI Processing'}
+      </h3>
+      <p className="text-gray-400">
+        {language === 'ar'
+          ? 'يقوم الذكاء الاصطناعي بإزالة الخلفية.'
+          : 'Our AI removes the background automatically.'}
+      </p>
+    </div>
+
+    <div className="glass-card p-6 text-center">
+      <div className="text-5xl mb-4">⬇️</div>
+      <h3 className="text-xl font-semibold text-white mb-2">
+        {language === 'ar' ? '3. حمّل الصورة' : '3. Download'}
+      </h3>
+      <p className="text-gray-400">
+        {language === 'ar'
+          ? 'نزّل الصورة بصيغة PNG.'
+          : 'Download your transparent PNG image.'}
+      </p>
+    </div>
+
+  </div>
+</div>
 
       {/* Main CTA + Sidebar */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -75,6 +121,55 @@ export default function HomePage() {
           <AdSidebar />
         </div>
       </div>
+      {/* FAQ */}
+<div className="mt-20">
+  <h2 className="text-3xl font-bold text-white text-center mb-10">
+    {language === 'ar' ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'}
+  </h2>
+
+  <div className="space-y-6">
+
+    <div className="glass-card p-6">
+      <h3 className="text-xl font-semibold text-white mb-2">
+        {language === 'ar'
+          ? 'هل الأداة مجانية؟'
+          : 'Is the background remover free?'}
+      </h3>
+      <p className="text-gray-400">
+        {language === 'ar'
+          ? 'نعم، يمكنك إزالة خلفية الصور مجانًا.'
+          : 'Yes. You can remove image backgrounds for free.'}
+      </p>
+    </div>
+
+    <div className="glass-card p-6">
+      <h3 className="text-xl font-semibold text-white mb-2">
+        {language === 'ar'
+          ? 'هل يتم حفظ صوري؟'
+          : 'Are my images stored?'}
+      </h3>
+      <p className="text-gray-400">
+        {language === 'ar'
+          ? 'لا، نحن لا نخزن صور المستخدمين.'
+          : 'No. Your images are not stored on our servers.'}
+      </p>
+    </div>
+
+    <div className="glass-card p-6">
+      <h3 className="text-xl font-semibold text-white mb-2">
+        {language === 'ar'
+          ? 'ما هي الصيغة التي أحصل عليها؟'
+          : 'What format is the output image?'}
+      </h3>
+      <p className="text-gray-400">
+        {language === 'ar'
+          ? 'تحصل على صورة PNG بخلفية شفافة.'
+          : 'The processed image is downloaded as a transparent PNG.'}
+      </p>
+    </div>
+
+  </div>
+</div>
     </div>
   );
 }
