@@ -1,0 +1,80 @@
+import { Link } from 'react-router-dom';
+import { Wand2, Zap, Shield, ArrowRight, Clock, Image } from 'lucide-react';
+import { useLanguage } from '../hooks/useLanguage';
+import AdSidebar from '../components/AdSidebar';
+
+export default function HomePage() {
+  const { t, language } = useLanguage();
+
+  const features = [
+    { icon: Zap, label: language === 'ar' ? 'معالجة فورية' : 'Instant Processing', desc: language === 'ar' ? 'نتائج في ثوانٍ' : 'Results in seconds' },
+    { icon: Shield, label: language === 'ar' ? 'خصوصية تامة' : '100% Private', desc: language === 'ar' ? 'لا تخزين للصور' : 'No image storage' },
+    { icon: Image, label: language === 'ar' ? 'PNG بجودة عالية' : 'High Quality PNG', desc: language === 'ar' ? 'بدون علامة مائية' : 'No watermark' },
+    { icon: Clock, label: language === 'ar' ? 'مجاني تماماً' : 'Completely Free', desc: language === 'ar' ? 'لا حدود للاستخدام' : 'No usage limits' },
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Hero */}
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
+          <Zap className="w-4 h-4 text-yellow-400" />
+          <span>{language === 'ar' ? 'مجاني 100% — بدون تسجيل' : '100% Free — No Signup Required'}</span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+          <span className="text-white">{t('hero.title')}</span>
+        </h1>
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
+          {t('hero.subtitle')}
+        </p>
+        <Link to="/remove-bg" className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4">
+          {t('hero.start')}
+          <ArrowRight className="w-5 h-5" />
+        </Link>
+      </div>
+
+      {/* Features Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {features.map((f, i) => {
+          const Icon = f.icon;
+          return (
+            <div key={i} className="glass-card p-6 text-center hover:bg-white/10 transition-all">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center mx-auto mb-4">
+                <Icon className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-1">{f.label}</h3>
+              <p className="text-sm text-gray-400">{f.desc}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Main CTA + Sidebar */}
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="lg:col-span-3">
+          <div className="glass-card p-8 sm:p-12 text-center">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center mx-auto mb-6">
+              <Wand2 className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-2xl font-bold text-white mb-3">
+              {language === 'ar' ? 'جرب الأداة الآن' : 'Try the Tool Now'}
+            </h2>
+            <p className="text-gray-400 mb-6 max-w-lg mx-auto">
+              {language === 'ar'
+                ? 'ارفع صورتك واحذف الخلفية بضغطة واحدة. نتيجة احترافية بجودة عالية.'
+                : 'Upload your image and remove the background with one click. Professional high-quality results.'}
+            </p>
+            <Link to="/remove-bg" className="btn-primary inline-flex items-center gap-2">
+              {t('hero.start')}
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+        <div className="lg:col-span-1 space-y-6">
+          <AdSidebar />
+          <AdSidebar />
+        </div>
+      </div>
+    </div>
+  );
+}
